@@ -1,0 +1,22 @@
+{
+  "name": "avalanche-smart-contract-starter",
+  "version": "1.0.0",
+  "description": "Solidity starter for deploying on Avalanche C-Chain",
+  "scripts": {
+    "compile": "hardhat compile",
+    "test": "hardhat test",
+    "test:intro": "hardhat test --grep Intro",
+    "deploy:fuji": "hardhat run scripts/deploy.js --network fuji",
+    "deploy:mainnet": "hardhat run scripts/deploy.js --network avalanche",
+    "verify:fuji": "hardhat run scripts/verify.js --network fuji",
+    "verify:mainnet": "hardhat run scripts/verify.js --network avalanche"
+  },
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^4.0.0",
+    "@nomicfoundation/hardhat-verify": "^2.0.0",
+    "hardhat": "^2.19.0"
+  },
+  "dependencies": {
+    "dotenv": "^16.3.1"
+  }
+}
