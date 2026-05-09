@@ -23,6 +23,6 @@ Thumbs.db
 
 # *.pem
 
-# AI Agent Data & Unrelated Files
+# Custom Build & Local Data
 .agent/
 updates.md
