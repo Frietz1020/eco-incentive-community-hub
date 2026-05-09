@@ -29,7 +29,7 @@
 
 ---
 
-## 🛠️ Tech Stack
+## 🛠️ Tech Stack :)
 
 ### Frontend
 - **Framework:** React 18 with Vite
