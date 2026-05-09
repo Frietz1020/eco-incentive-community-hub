@@ -1,22 +1,37 @@
+import { motion } from "framer-motion";
+import { Wallet, CheckCircle } from "lucide-react";
+
 export default function ConnectWallet({ account, onConnect }) {
   const shortAddress = account ? `${account.slice(0, 6)}...${account.slice(-4)}` : "";
 
   return (
-    <div className="flex flex-col gap-3 rounded-lg border border-line bg-white p-4 shadow-sm">
-      <div>
-        <p className="text-sm font-semibold text-canopy">Wallet</p>
-        <h2 className="text-xl font-semibold text-ink">MetaMask/Core connection</h2>
-      </div>
-      {account ? (
-        <div className="rounded-md bg-field px-3 py-2 font-mono text-sm text-ink">
-          {shortAddress}
+    <div className="glass-card p-4">
+      <div className="flex items-center gap-3 mb-3">
+        <div className="grid h-9 w-9 place-items-center rounded-bio bg-primary-dim">
+          <Wallet size={18} className="text-primary" />
         </div>
+        <div>
+          <p className="text-xs font-semibold uppercase tracking-wider text-muted">Wallet</p>
+          <h2 className="text-sm font-semibold text-ink-strong">Connection</h2>
+        </div>
+      </div>
+
+      {account ? (
+        <motion.div
+          initial={{ opacity: 0, y: 4 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="flex items-center gap-2 rounded-bio bg-accent-dim px-4 py-3"
+        >
+          <CheckCircle size={14} className="text-accent shrink-0" />
+          <span className="font-mono text-sm text-accent-dark font-semibold">{shortAddress}</span>
+        </motion.div>
       ) : (
         <button
           type="button"
           onClick={onConnect}
-          className="rounded-md bg-canopy px-4 py-2 text-sm font-semibold text-white transition hover:bg-canopy/90"
+          className="eco-btn eco-btn-cyan w-full cursor-pointer"
         >
+          <Wallet size={16} />
           Connect Wallet
         </button>
       )}

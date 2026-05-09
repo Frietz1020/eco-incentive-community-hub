@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Scroll, ExternalLink, Loader, Image as ImageIcon } from "lucide-react";
 import { CONTRACT_ADDRESS, getReadContract } from "../lib/contract";
 import { SNOWTRACE_BASE_URL } from "../lib/constants";
 
-function shortAddress(address) {
-  if (!address) return "--";
-  return `${address.slice(0, 6)}...${address.slice(-4)}`;
+function shortAddress(addr) {
+  return addr ? `${addr.slice(0, 6)}...${addr.slice(-4)}` : "--";
 }
 
 export default function ActivityFeed({ provider, refreshKey }) {
@@ -14,111 +15,54 @@ export default function ActivityFeed({ provider, refreshKey }) {
 
   useEffect(() => {
     let cancelled = false;
-
-    async function loadEvents() {
+    async function load() {
       if (!CONTRACT_ADDRESS) return;
-
       setLoading(true);
       try {
-        const contract = getReadContract(provider);
-        const latestBlock = await contract.runner.provider.getBlockNumber();
-        const fromBlock = Math.max(0, latestBlock - 5000);
-        const [actions, awards] = await Promise.all([
-          contract.queryFilter(contract.filters.ActionRecorded(), fromBlock, "latest"),
-          contract.queryFilter(contract.filters.PointsAwarded(), fromBlock, "latest"),
+        const c = getReadContract(provider);
+        const latest = await c.runner.provider.getBlockNumber();
+        const from = Math.max(0, latest - 2000);
+        const [acts, aws] = await Promise.all([
+          c.queryFilter(c.filters.ActionRecorded(), from, "latest"),
+          c.queryFilter(c.filters.PointsAwarded(), from, "latest"),
         ]);
-
-        const awardsByTx = new Map(
-          awards.map((event) => [
-            event.transactionHash,
-            {
-              amount: event.args.amount.toString(),
-              newTotal: event.args.newTotal.toString(),
-            },
-          ])
-        );
-
-        const nextItems = actions
-          .map((event) => {
-            const award = awardsByTx.get(event.transactionHash);
-            return {
-              transactionHash: event.transactionHash,
-              blockNumber: event.blockNumber,
-              participant: event.args.participant,
-              actionType: event.args.actionType,
-              timestamp: Number(event.args.timestamp),
-              amount: award?.amount,
-              newTotal: award?.newTotal,
-            };
-          })
-          .sort((a, b) => b.blockNumber - a.blockNumber)
-          .slice(0, 6);
-
-        if (cancelled) return;
-        setItems(nextItems);
-        setError("");
-      } catch (loadError) {
-        if (cancelled) return;
-        setError(loadError?.shortMessage || "Could not load recent events.");
-      } finally {
-        if (!cancelled) setLoading(false);
-      }
+        const map = new Map(aws.map(e => [e.transactionHash, { amount: e.args.amount.toString(), newTotal: e.args.newTotal.toString() }]));
+        const next = acts.map(e => {
+          const a = map.get(e.transactionHash);
+          return { txHash: e.transactionHash, block: e.blockNumber, participant: e.args.participant, actionType: e.args.actionType, proofUrl: e.args.proofUrl || "", ts: Number(e.args.timestamp), amount: a?.amount, newTotal: a?.newTotal };
+        }).sort((a, b) => b.block - a.block).slice(0, 8);
+        if (!cancelled) { setItems(next); setError(""); }
+      } catch (err) { if (!cancelled) setError(err?.shortMessage || "Could not load events."); }
+      finally { if (!cancelled) setLoading(false); }
     }
-
-    loadEvents();
-
-    return () => {
-      cancelled = true;
-    };
+    load();
+    return () => { cancelled = true; };
   }, [provider, refreshKey]);
 
   return (
-    <div className="rounded-lg border border-line bg-white p-5 shadow-sm">
+    <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} className="glass-card p-5">
       <div className="mb-4 flex items-center justify-between gap-3">
-        <div>
-          <p className="text-sm font-semibold text-canopy">Ledger</p>
-          <h2 className="text-xl font-semibold text-ink">Recent on-chain activity</h2>
+        <div className="flex items-center gap-3">
+          <div className="grid h-9 w-9 place-items-center rounded-bio bg-accent-dim"><Scroll size={18} className="text-accent" /></div>
+          <div><p className="text-xs font-semibold uppercase tracking-wider text-accent">Ledger</p><h2 className="text-lg font-semibold text-ink-strong">Recent Activity</h2></div>
         </div>
-        {loading && <span className="text-xs font-semibold text-ink/50">Loading</span>}
+        {loading && <Loader size={16} className="text-faint animate-spin" />}
       </div>
-
-      {items.length === 0 ? (
-        <p className="rounded-md bg-field p-4 text-sm text-ink/70">
-          No recent EcoLedger actions found yet.
-        </p>
+      {items.length === 0 && !loading ? (
+        <div className="rounded-bio bg-surface-field border border-line p-6 text-center"><Scroll size={24} className="text-faint mx-auto mb-2" /><p className="text-sm text-muted">No recent actions found.</p></div>
       ) : (
-        <div className="grid gap-3">
-          {items.map((item) => (
-            <a
-              key={`${item.transactionHash}-${item.blockNumber}`}
-              href={`${SNOWTRACE_BASE_URL}/tx/${item.transactionHash}`}
-              target="_blank"
-              rel="noreferrer"
-              className="rounded-md border border-line p-3 transition hover:border-river/40 hover:bg-field"
-            >
-              <div className="flex items-start justify-between gap-3">
-                <div>
-                  <p className="font-semibold text-ink">{item.actionType}</p>
-                  <p className="mt-1 font-mono text-xs text-ink/60">
-                    {shortAddress(item.participant)}
-                  </p>
-                </div>
-                <div className="text-right">
-                  <p className="text-sm font-semibold text-canopy">
-                    +{item.amount ?? "--"} GP
-                  </p>
-                  <p className="mt-1 text-xs text-ink/50">Total {item.newTotal ?? "--"}</p>
-                </div>
-              </div>
-              <p className="mt-2 text-xs text-ink/50">
-                {new Date(item.timestamp * 1000).toLocaleString()}
-              </p>
-            </a>
-          ))}
-        </div>
+        <div className="grid gap-3"><AnimatePresence>{items.map((it, i) => (
+          <motion.a key={it.txHash + it.block} href={`${SNOWTRACE_BASE_URL}/tx/${it.txHash}`} target="_blank" rel="noreferrer" initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.04 }} className="block rounded-bio border border-line bg-white p-4 transition-all hover:border-accent/25 hover:shadow-card-hover group cursor-pointer">
+            <div className="flex items-start justify-between gap-3">
+              <div className="flex-1 min-w-0"><div className="flex items-center gap-2"><p className="font-semibold text-ink-strong">{it.actionType}</p><ExternalLink size={12} className="text-faint opacity-0 group-hover:opacity-100 transition-opacity" /></div><p className="mt-1 font-mono text-xs text-muted">{shortAddress(it.participant)}</p></div>
+              <div className="text-right shrink-0"><p className="text-sm font-bold text-accent">+{it.amount ?? "--"} GP</p><p className="mt-0.5 text-xs text-muted">Total {it.newTotal ?? "--"}</p></div>
+            </div>
+            {it.proofUrl && (<div className="mt-3"><div className="flex items-center gap-1.5 mb-1.5"><ImageIcon size={12} className="text-primary" /><span className="text-xs font-semibold text-primary">Proof</span></div><img src={it.proofUrl} alt="Proof" className="w-full h-28 object-cover rounded-bio border border-line" onError={e => { e.target.style.display = "none"; }} /></div>)}
+            <p className="mt-2 text-xs text-faint">{new Date(it.ts * 1000).toLocaleString()}</p>
+          </motion.a>
+        ))}</AnimatePresence></div>
       )}
-
-      {error && <p className="mt-3 text-xs text-red-700">{error}</p>}
-    </div>
+      {error && <p className="mt-3 text-xs text-danger rounded-bio bg-danger/5 px-3 py-2">{error}</p>}
+    </motion.div>
   );
 }

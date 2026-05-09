@@ -1,4 +1,6 @@
 import { ethers } from "ethers";
+import { motion } from "framer-motion";
+import { ArrowRightLeft, AlertTriangle } from "lucide-react";
 import { CONTRACT_ADDRESS, getContract } from "../lib/contract";
 
 export default function AdminTransfer({
@@ -45,37 +47,52 @@ export default function AdminTransfer({
   }
 
   return (
-    <form onSubmit={handleSubmit} className="rounded-lg border border-line bg-white p-5 shadow-sm">
+    <motion.form
+      onSubmit={handleSubmit}
+      initial={{ opacity: 0, y: 12 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: 0.2 }}
+      className="glass-card p-5"
+    >
       <div className="mb-5">
-        <p className="text-sm font-semibold text-river">Step 2</p>
-        <h2 className="text-xl font-semibold text-ink">Transfer admin</h2>
-        <p className="mt-2 text-sm leading-6 text-moss">
-          Move verifier control to a different team wallet after deployment or handoff.
+        <div className="flex items-center gap-3 mb-2">
+          <div className="grid h-9 w-9 place-items-center rounded-bio bg-amber/10">
+            <ArrowRightLeft size={18} className="text-amber" />
+          </div>
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-wider text-amber">Ownership</p>
+            <h2 className="text-lg font-semibold text-ink-strong">Transfer Admin</h2>
+          </div>
+        </div>
+        <p className="text-sm leading-relaxed text-muted">
+          Transfer verifier control to a different team wallet. This action is irreversible.
         </p>
+
         {disabledReason && (
-          <p className="mt-3 rounded-md bg-sun/10 px-3 py-2 text-sm text-amber-800">
+          <div className="mt-3 rounded-bio bg-amber/8 border border-amber/20 px-4 py-2.5 text-sm text-amber">
             {disabledReason}
-          </p>
+          </div>
         )}
       </div>
 
-      <label className="grid gap-2 text-sm font-medium text-ink">
-        New admin address
-        <input
-          name="newAdmin"
-          placeholder="0x..."
-          className="rounded-md border border-line px-3 py-2 font-mono text-sm outline-none focus:border-river"
-          required
-        />
+      <div className="flex items-center gap-2 mb-4 rounded-bio bg-danger/5 border border-danger/15 px-4 py-2.5">
+        <AlertTriangle size={14} className="text-danger shrink-0" />
+        <p className="text-xs text-danger">This cannot be undone. Double-check the address below.</p>
+      </div>
+
+      <label className="grid gap-1.5">
+        <span className="text-xs font-semibold uppercase tracking-wider text-muted">New Admin Address</span>
+        <input name="newAdmin" placeholder="0x..." className="eco-input font-mono" required />
       </label>
 
       <button
         type="submit"
         disabled={disabled}
-        className="mt-4 w-full rounded-md bg-river px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-river/90 disabled:cursor-not-allowed disabled:bg-moss/40"
+        className="eco-btn eco-btn-danger w-full mt-5 cursor-pointer"
       >
+        <ArrowRightLeft size={16} />
         Transfer Admin
       </button>
-    </form>
+    </motion.form>
   );
 }

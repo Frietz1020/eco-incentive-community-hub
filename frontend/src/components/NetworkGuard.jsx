@@ -1,3 +1,5 @@
+import { motion } from "framer-motion";
+import { Globe, ArrowRightLeft, CheckCircle } from "lucide-react";
 import { FUJI_CHAIN_ID, FUJI_CHAIN_ID_HEX, FUJI_RPC } from "../lib/constants";
 
 export default function NetworkGuard({ chainId, onNetworkChanged }) {
@@ -24,28 +26,42 @@ export default function NetworkGuard({ chainId, onNetworkChanged }) {
   }
 
   return (
-    <div
-      className={`rounded-lg border p-4 shadow-sm ${
-        isFuji ? "border-canopy/20 bg-canopy/10" : "border-sun/40 bg-sun/10"
-      }`}
-    >
-      <p className="text-sm font-semibold text-ink">Network</p>
-      <div className="mt-2 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-        <p className="text-sm text-ink/75">
-          {isFuji
-            ? "Connected to Avalanche Fuji C-Chain."
-            : "Switch to Avalanche Fuji C-Chain to use EcoLedger."}
-        </p>
-        {!isFuji && (
+    <div className={`glass-card p-4 transition-all duration-300 ${
+      isFuji ? "border-accent/30" : "border-amber/30"
+    }`}>
+      <div className="flex items-center gap-3 mb-3">
+        <div className={`grid h-9 w-9 place-items-center rounded-bio ${
+          isFuji ? "bg-accent-dim" : "bg-amber/10"
+        }`}>
+          <Globe size={18} className={isFuji ? "text-accent" : "text-amber"} />
+        </div>
+        <div className="flex-1">
+          <p className="text-xs font-semibold uppercase tracking-wider text-muted">Network</p>
+          <p className="text-sm font-semibold text-ink-strong">
+            {isFuji ? "Avalanche Fuji" : chainId ? `Chain ${chainId}` : "Not connected"}
+          </p>
+        </div>
+        {isFuji ? (
+          <span className="eco-badge eco-badge-green">
+            <CheckCircle size={12} /> Connected
+          </span>
+        ) : (
+          <span className="eco-badge eco-badge-amber">Wrong Network</span>
+        )}
+      </div>
+
+      {!isFuji && (
+        <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: "auto" }}>
           <button
             type="button"
             onClick={switchToFuji}
-            className="rounded-md bg-river px-4 py-2 text-sm font-semibold text-white transition hover:bg-river/90"
+            className="eco-btn eco-btn-cyan w-full mt-1 cursor-pointer"
           >
+            <ArrowRightLeft size={16} />
             Switch to Fuji
           </button>
-        )}
-      </div>
+        </motion.div>
+      )}
     </div>
   );
 }

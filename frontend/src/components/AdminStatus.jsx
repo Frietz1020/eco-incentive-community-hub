@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
+import { Shield, ExternalLink } from "lucide-react";
 import { CONTRACT_ADDRESS, getReadContract } from "../lib/contract";
 import { SNOWTRACE_BASE_URL } from "../lib/constants";
 
@@ -41,47 +43,61 @@ export default function AdminStatus({ account, provider, refreshKey, onAdminChec
     };
   }, [provider, refreshKey, onAdminChecked]);
 
+  const shortAdmin = admin ? `${admin.slice(0, 6)}...${admin.slice(-4)}` : "--";
+
   return (
-    <div className="rounded-lg border border-line bg-white p-4 text-sm shadow-sm">
-      <div className="flex items-start justify-between gap-3">
-        <div>
-        <p className="font-semibold text-ink">Contract status</p>
-          <p className="mt-1 text-ink/70">
-            {isAdmin ? "Connected wallet is admin." : "Connect the admin wallet to record actions."}
-          </p>
+    <div className="glass-card p-4">
+      <div className="flex items-center justify-between gap-3 mb-4">
+        <div className="flex items-center gap-3">
+          <div className={`grid h-9 w-9 place-items-center rounded-bio ${
+            isAdmin ? "bg-accent-dim" : "bg-amber/10"
+          }`}>
+            <Shield size={18} className={isAdmin ? "text-accent" : "text-amber"} />
+          </div>
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-wider text-muted">Contract</p>
+            <p className="text-sm font-semibold text-ink-strong">Status</p>
+          </div>
         </div>
-        <span
-          className={`rounded-full px-3 py-1 text-xs font-semibold ${
-            isAdmin ? "bg-canopy/15 text-canopy" : "bg-sun/15 text-amber-800"
-          }`}
-        >
+        <span className={`eco-badge ${isAdmin ? "eco-badge-green" : "eco-badge-amber"}`}>
           {isAdmin ? "Admin" : "Read-only"}
         </span>
       </div>
 
-      <dl className="mt-4 grid gap-3">
-        <div>
-          <dt className="text-xs font-semibold uppercase text-ink/50">Admin</dt>
-          <dd className="mt-1 break-all font-mono text-xs text-ink">{admin || "--"}</dd>
+      <div className="grid gap-3">
+        <div className="stat-card">
+          <p className="text-xs font-semibold uppercase tracking-wider text-muted mb-1">Admin</p>
+          <p className="font-mono text-xs text-ink-strong" title={admin}>{shortAdmin}</p>
         </div>
-        <div>
-          <dt className="text-xs font-semibold uppercase text-ink/50">Actions recorded</dt>
-          <dd className="mt-1 text-2xl font-semibold text-ink">{totalActions ?? "--"}</dd>
+
+        <div className="stat-card">
+          <p className="text-xs font-semibold uppercase tracking-wider text-muted mb-1">Actions Recorded</p>
+          <motion.p
+            key={totalActions}
+            initial={{ scale: 0.8, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            className="text-2xl font-bold text-primary"
+          >
+            {totalActions ?? "--"}
+          </motion.p>
         </div>
-      </dl>
+      </div>
 
       {CONTRACT_ADDRESS && (
         <a
           href={`${SNOWTRACE_BASE_URL}/address/${CONTRACT_ADDRESS}`}
           target="_blank"
           rel="noreferrer"
-          className="mt-4 inline-block text-xs font-semibold text-river underline"
+          className="flex items-center gap-1.5 mt-4 text-xs font-semibold text-primary hover:text-primary-dark transition-colors cursor-pointer"
         >
-          View contract on Snowtrace
+          <ExternalLink size={12} />
+          View on Snowtrace
         </a>
       )}
 
-      {error && <p className="mt-3 text-xs text-red-700">{error}</p>}
+      {error && (
+        <p className="mt-3 text-xs text-danger rounded-bio bg-danger/5 px-3 py-2">{error}</p>
+      )}
     </div>
   );
 }

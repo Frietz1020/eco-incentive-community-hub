@@ -11,7 +11,7 @@ contract EcoLedger {
     uint256 public totalActionsRecorded;
     mapping(address => uint256) public actionCount;
 
-    event ActionRecorded(address indexed participant, string actionType, uint256 timestamp);
+    event ActionRecorded(address indexed participant, string actionType, string proofUrl, uint256 timestamp);
     event PointsAwarded(address indexed participant, uint256 amount, uint256 newTotal);
     event AdminTransferred(address indexed oldAdmin, address indexed newAdmin);
 
@@ -22,7 +22,8 @@ contract EcoLedger {
     function recordAction(
         address participant,
         string calldata actionType,
-        uint256 pointsToAward
+        uint256 pointsToAward,
+        string calldata proofUrl
     ) external {
         require(msg.sender == admin, "Only admin");
         require(participant != address(0), "Invalid address");
@@ -32,7 +33,7 @@ contract EcoLedger {
         totalActionsRecorded++;
         actionCount[participant]++;
 
-        emit ActionRecorded(participant, actionType, block.timestamp);
+        emit ActionRecorded(participant, actionType, proofUrl, block.timestamp);
         emit PointsAwarded(participant, pointsToAward, points[participant]);
     }
 

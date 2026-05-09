@@ -1,27 +1,18 @@
+import { useState } from "react";
 import { ethers } from "ethers";
+import { motion } from "framer-motion";
+import { Send } from "lucide-react";
+import ImageProofInput from "./ImageProofInput";
 
 const EVENTS = [
-  {
-    code: "CLEANUP-2026",
-    name: "Barangay River Cleanup",
-    actionType: "Waste Cleanup",
-    points: "15",
-  },
-  {
-    code: "TREE-2026",
-    name: "Community Tree Planting",
-    actionType: "Tree Planting",
-    points: "25",
-  },
-  {
-    code: "RECYCLE-2026",
-    name: "Recycling Drive",
-    actionType: "Recycling Drive",
-    points: "10",
-  },
+  { code: "CLEANUP-2026", name: "Barangay River Cleanup", actionType: "Waste Cleanup", points: "15" },
+  { code: "TREE-2026", name: "Community Tree Planting", actionType: "Tree Planting", points: "25" },
+  { code: "RECYCLE-2026", name: "Recycling Drive", actionType: "Recycling Drive", points: "10" },
 ];
 
 export default function ParticipantCheckIn({ account, onSubmitRequest, onTxStatus }) {
+  const [proofImage, setProofImage] = useState("");
+
   function handleSubmit(event) {
     event.preventDefault();
     const form = event.currentTarget;
@@ -49,6 +40,7 @@ export default function ParticipantCheckIn({ account, onSubmitRequest, onTxStatu
       actionType: selectedEvent.actionType,
       points: selectedEvent.points,
       proofNote,
+      proofImage,
       status: "pending",
       createdAt: new Date().toISOString(),
     });
@@ -58,38 +50,40 @@ export default function ParticipantCheckIn({ account, onSubmitRequest, onTxStatu
       message: "Check-in submitted for admin verification.",
     });
     form.reset();
+    setProofImage("");
   }
 
   return (
-    <form onSubmit={handleSubmit} className="rounded-lg border border-line bg-white p-5 shadow-sm">
+    <motion.form
+      onSubmit={handleSubmit}
+      initial={{ opacity: 0, y: 12 }}
+      animate={{ opacity: 1, y: 0 }}
+      className="glass-card p-5"
+    >
       <div className="mb-5">
-        <p className="text-sm font-semibold text-canopy">Check-in</p>
-        <h2 className="text-xl font-semibold text-ink">Submit activity proof</h2>
-        <p className="mt-2 text-sm leading-6 text-moss">
-          Use this after joining a cleanup, tree planting, or community service event.
-          The admin reviews it before points are recorded on-chain.
+        <div className="flex items-center gap-3 mb-2">
+          <div className="grid h-9 w-9 place-items-center rounded-bio bg-primary-dim">
+            <Send size={18} className="text-primary" />
+          </div>
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-wider text-primary">Check-In</p>
+            <h2 className="text-lg font-semibold text-ink-strong">Submit Activity Proof</h2>
+          </div>
+        </div>
+        <p className="text-sm leading-relaxed text-muted">
+          Select the event you attended and upload a proof photo. The admin reviews it before points are recorded on-chain.
         </p>
       </div>
 
       <div className="grid gap-4">
-        <label className="grid gap-2 text-sm font-medium text-ink">
-          Participant wallet
-          <input
-            name="participant"
-            defaultValue={account || ""}
-            placeholder="0x..."
-            className="rounded-md border border-line px-3 py-2 font-mono text-sm outline-none focus:border-canopy"
-            required
-          />
+        <label className="grid gap-1.5">
+          <span className="text-xs font-semibold uppercase tracking-wider text-muted">Participant Wallet</span>
+          <input name="participant" defaultValue={account || ""} placeholder="0x..." className="eco-input font-mono" required />
         </label>
 
-        <label className="grid gap-2 text-sm font-medium text-ink">
-          Event attended
-          <select
-            name="eventCode"
-            className="rounded-md border border-line px-3 py-2 outline-none focus:border-canopy"
-            defaultValue={EVENTS[0].code}
-          >
+        <label className="grid gap-1.5">
+          <span className="text-xs font-semibold uppercase tracking-wider text-muted">Event Attended</span>
+          <select name="eventCode" className="eco-select" defaultValue={EVENTS[0].code}>
             {EVENTS.map((eventItem) => (
               <option key={eventItem.code} value={eventItem.code}>
                 {eventItem.name} ({eventItem.code})
@@ -98,23 +92,26 @@ export default function ParticipantCheckIn({ account, onSubmitRequest, onTxStatu
           </select>
         </label>
 
-        <label className="grid gap-2 text-sm font-medium text-ink">
-          Proof note
+        <ImageProofInput value={proofImage} onChange={setProofImage} label="Proof Photo" />
+
+        <label className="grid gap-1.5">
+          <span className="text-xs font-semibold uppercase tracking-wider text-muted">Proof Note</span>
           <textarea
             name="proofNote"
             rows="3"
             placeholder="Example: Joined cleanup team A, verified by event marshal."
-            className="resize-none rounded-md border border-line px-3 py-2 text-sm outline-none focus:border-canopy"
+            className="eco-input resize-none"
           />
         </label>
       </div>
 
       <button
         type="submit"
-        className="mt-5 w-full rounded-md bg-canopy px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-canopy/90"
+        className="eco-btn eco-btn-cyan w-full mt-5 cursor-pointer"
       >
+        <Send size={16} />
         Submit for Verification
       </button>
-    </form>
+    </motion.form>
   );
 }

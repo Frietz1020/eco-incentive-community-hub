@@ -1,31 +1,339 @@
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  color: #0f172a;
-  background: #f8fafc;
-  font-family:
-    Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-    sans-serif;
+  color-scheme: light;
+  --primary: #059669;
+  --accent: #84CC16;
+  --canvas: #F0FDF4;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
+  background: #F0FDF4;
+  color: #064E3B;
+  font-family: "Exo 2", ui-sans-serif, system-ui, sans-serif;
 }
 
-button,
-input,
-select {
-  font: inherit;
+/* ───── Blockchain Background Animation ───── */
+.blockchain-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
 }
 
+.blockchain-bg svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.chain-node {
+  fill: rgba(5, 150, 105, 0.08);
+  animation: nodePulse 4s ease-in-out infinite;
+}
+
+.chain-node:nth-child(odd) {
+  fill: rgba(132, 204, 22, 0.08);
+  animation-delay: -2s;
+}
+
+.chain-link {
+  stroke: rgba(5, 150, 105, 0.06);
+  stroke-width: 1;
+  stroke-dasharray: 4 6;
+  animation: dashFlow 12s linear infinite;
+}
+
+.chain-link-accent {
+  stroke: rgba(132, 204, 22, 0.06);
+  stroke-width: 1;
+  stroke-dasharray: 6 8;
+  animation: dashFlow 16s linear infinite reverse;
+}
+
+@keyframes nodePulse {
+  0%, 100% { opacity: 0.3; r: 4; }
+  50% { opacity: 0.6; r: 6; }
+}
+
+@keyframes dashFlow {
+  0% { stroke-dashoffset: 0; }
+  100% { stroke-dashoffset: -100; }
+}
+
+/* Organic floating circles */
+.blockchain-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 50% 40% at 15% 25%, rgba(5,150,105,0.06) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 50% at 85% 75%, rgba(132,204,22,0.06) 0%, transparent 70%),
+    radial-gradient(ellipse 60% 30% at 50% 10%, rgba(250,204,21,0.04) 0%, transparent 70%);
+}
+
+/* ───── Glass Card (Light Mode) ───── */
+@layer components {
+  .glass-card {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(5,150,105,0.15); /* Tinted border */
+    border-radius: 16px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 4px 16px rgba(0,0,0,0.04);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .glass-card:hover {
+    box-shadow: 0 2px 8px rgba(5,150,105,0.08), 0 8px 32px rgba(5,150,105,0.06);
+    border-color: rgba(5,150,105,0.25);
+  }
+
+  /* Form inputs */
+  .eco-input {
+    background: #FFFFFF;
+    border: 1.5px solid #E2E8F0;
+    border-radius: 12px;
+    padding: 10px 14px;
+    color: #022C22;
+    font-size: 0.875rem;
+    transition: all 0.2s ease;
+    outline: none;
+    width: 100%;
+  }
+
+  .eco-input::placeholder {
+    color: #94A3B8;
+  }
+
+  .eco-input:focus {
+    border-color: #059669;
+    box-shadow: 0 0 0 3px rgba(5,150,105,0.1);
+  }
+
+  .eco-input:hover:not(:focus) {
+    border-color: #CBD5E1;
+  }
+
+  .eco-select {
+    background: #FFFFFF;
+    border: 1.5px solid #E2E8F0;
+    border-radius: 12px;
+    padding: 10px 14px;
+    color: #022C22;
+    font-size: 0.875rem;
+    transition: all 0.2s ease;
+    outline: none;
+    appearance: none;
+    width: 100%;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23475569' viewBox='0 0 16 16'%3E%3Cpath d='m4.5 6.5 3.5 3.5 3.5-3.5'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    padding-right: 36px;
+  }
+
+  .eco-select:focus {
+    border-color: #059669;
+    box-shadow: 0 0 0 3px rgba(5,150,105,0.1);
+  }
+
+  /* Buttons */
+  .eco-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 0.875rem;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .eco-btn-primary {
+    background: linear-gradient(135deg, #059669 0%, #047857 100%);
+    color: white;
+    box-shadow: 0 2px 8px rgba(5,150,105,0.25);
+  }
+
+  .eco-btn-primary:hover {
+    box-shadow: 0 4px 16px rgba(5,150,105,0.35);
+    transform: translateY(-1px);
+  }
+
+  .eco-btn-primary:active {
+    transform: translateY(0);
+  }
+
+  .eco-btn-primary:disabled {
+    background: #E2E8F0;
+    color: #94A3B8;
+    box-shadow: none;
+    cursor: not-allowed;
+    transform: none;
+  }
+
+  .eco-btn-secondary {
+    background: #F1F5F9;
+    color: #064E3B;
+    border: 1px solid #E2E8F0;
+  }
+
+  .eco-btn-secondary:hover {
+    background: #E2E8F0;
+    border-color: #CBD5E1;
+  }
+
+  .eco-btn-danger {
+    background: rgba(239,68,68,0.08);
+    color: #EF4444;
+    border: 1px solid rgba(239,68,68,0.2);
+  }
+
+  .eco-btn-danger:hover {
+    background: rgba(239,68,68,0.15);
+  }
+
+  .eco-btn-cyan {
+    background: linear-gradient(135deg, #84CC16 0%, #65A30D 100%);
+    color: white;
+    box-shadow: 0 2px 8px rgba(132,204,22,0.25);
+  }
+
+  .eco-btn-cyan:hover {
+    box-shadow: 0 4px 16px rgba(132,204,22,0.35);
+    transform: translateY(-1px);
+  }
+
+  /* Badges */
+  .eco-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+  }
+
+  .eco-badge-green {
+    background: rgba(5,150,105,0.10);
+    color: #047857;
+  }
+
+  .eco-badge-amber {
+    background: rgba(245,158,11,0.10);
+    color: #D97706;
+  }
+
+  .eco-badge-cyan {
+    background: rgba(132,204,22,0.10);
+    color: #65A30D;
+  }
+
+  .eco-badge-danger {
+    background: rgba(239,68,68,0.08);
+    color: #DC2626;
+  }
+
+  .eco-badge-muted {
+    background: #F1F5F9;
+    color: #64748B;
+  }
+
+  /* Stat card */
+  .stat-card {
+    background: #F8FAFC;
+    border: 1px solid #E2E8F0;
+    border-radius: 12px;
+    padding: 16px;
+    text-align: center;
+  }
+
+  /* Image upload area */
+  .proof-upload {
+    border: 2px dashed #CBD5E1;
+    border-radius: 16px;
+    padding: 24px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    background: #F8FAFC;
+  }
+
+  .proof-upload:hover {
+    border-color: #059669;
+    background: rgba(5,150,105,0.03);
+  }
+
+  .proof-upload.has-image {
+    border-style: solid;
+    border-color: #84CC16;
+    padding: 8px;
+  }
+}
+
+/* ───── Scrollbar ───── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94A3B8;
+}
+
+/* ───── Focus ───── */
 button:focus-visible,
 input:focus-visible,
 select:focus-visible,
+textarea:focus-visible,
 a:focus-visible {
-  outline: 3px solid rgba(37, 99, 235, 0.28);
+  outline: 2px solid #059669;
   outline-offset: 2px;
+}
+
+/* ───── Selection ───── */
+::selection {
+  background: rgba(5,150,105,0.15);
+  color: #022C22;
+}
+
+/* ───── Reduced motion ───── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
