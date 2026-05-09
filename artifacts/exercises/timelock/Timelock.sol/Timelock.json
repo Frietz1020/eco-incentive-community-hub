@@ -1,0 +1,10 @@
+{
+  "_format": "hh-sol-artifact-1",
+  "contractName": "Timelock",
+  "sourceName": "exercises/timelock/Timelock.sol",
+  "abi": [],
+  "bytecode": "0x6080604052348015600f57600080fd5b50603f80601d6000396000f3fe6080604052600080fdfea26469706673582212206bc3913c27c0d3e4e40662dbe56326c1600a305aaa71ad7fdc320f73676a6d9564736f6c63430008140033",
+  "deployedBytecode": "0x6080604052600080fdfea26469706673582212206bc3913c27c0d3e4e40662dbe56326c1600a305aaa71ad7fdc320f73676a6d9564736f6c63430008140033",
+  "linkReferences": {},
+  "deployedLinkReferences": {}
+}

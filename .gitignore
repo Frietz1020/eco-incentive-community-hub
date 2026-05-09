@@ -4,7 +4,6 @@ node_modules/
 !.env.example
 
 cache/
-artifacts/
 typechain/
 typechain-types/
 deployments/

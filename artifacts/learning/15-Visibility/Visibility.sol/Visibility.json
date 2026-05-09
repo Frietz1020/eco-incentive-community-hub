@@ -1,0 +1,82 @@
+{
+  "_format": "hh-sol-artifact-1",
+  "contractName": "Visibility",
+  "sourceName": "learning/15-Visibility/Visibility.sol",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "x",
+          "type": "uint256"
+        }
+      ],
+      "name": "externalFn",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "pure",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getPrivate",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "publicVar",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "x",
+          "type": "uint256"
+        }
+      ],
+      "name": "setInternal",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "x",
+          "type": "uint256"
+        }
+      ],
+      "name": "setPrivate",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "bytecode": "0x608060405234801561001057600080fd5b5061012a806100206000396000f3fe6080604052348015600f57600080fd5b506004361060505760003560e01c80631151fad8146055578063246a1c1f14606f57806343a389ef14608157806389cfd71b1460905780639ad552201460a0575b600080fd5b605d60005481565b60405190815260200160405180910390f35b607f607a36600460b8565b600255565b005b605d608c36600460b8565b60a7565b607f609b36600460b8565b600155565b600154605d565b600060b282600260d0565b92915050565b60006020828403121560c957600080fd5b5035919050565b808202811582820484141760b257634e487b7160e01b600052601160045260246000fdfea264697066735822122034c73abfbad2b3227012451e2e5b4fbae103ab3befff8b81783e0034de8069c564736f6c63430008140033",
+  "deployedBytecode": "0x6080604052348015600f57600080fd5b506004361060505760003560e01c80631151fad8146055578063246a1c1f14606f57806343a389ef14608157806389cfd71b1460905780639ad552201460a0575b600080fd5b605d60005481565b60405190815260200160405180910390f35b607f607a36600460b8565b600255565b005b605d608c36600460b8565b60a7565b607f609b36600460b8565b600155565b600154605d565b600060b282600260d0565b92915050565b60006020828403121560c957600080fd5b5035919050565b808202811582820484141760b257634e487b7160e01b600052601160045260246000fdfea264697066735822122034c73abfbad2b3227012451e2e5b4fbae103ab3befff8b81783e0034de8069c564736f6c63430008140033",
+  "linkReferences": {},
+  "deployedLinkReferences": {}
+}

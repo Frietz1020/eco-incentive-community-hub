@@ -1,0 +1,74 @@
+{
+  "_format": "hh-sol-artifact-1",
+  "contractName": "Functions",
+  "sourceName": "learning/4-Function/Functions.sol",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "a",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "b",
+          "type": "uint256"
+        }
+      ],
+      "name": "add",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "pure",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "get",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_value",
+          "type": "uint256"
+        }
+      ],
+      "name": "set",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "value",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "bytecode": "0x608060405234801561001057600080fd5b5061012b806100206000396000f3fe6080604052348015600f57600080fd5b506004361060465760003560e01c80633fa4f24514604b57806360fe47b11460655780636d4ce63c146077578063771602f714607e575b600080fd5b605360005481565b60405190815260200160405180910390f35b60756070366004609c565b600055565b005b6000546053565b6053608936600460b4565b60006093828460d5565b90505b92915050565b60006020828403121560ad57600080fd5b5035919050565b6000806040838503121560c657600080fd5b50508035926020909101359150565b80820180821115609657634e487b7160e01b600052601160045260246000fdfea2646970667358221220cc6f33af5f7ec5b57d41d01ce72579173dab804cd3bb07a01e8df8423ff7dbb964736f6c63430008140033",
+  "deployedBytecode": "0x6080604052348015600f57600080fd5b506004361060465760003560e01c80633fa4f24514604b57806360fe47b11460655780636d4ce63c146077578063771602f714607e575b600080fd5b605360005481565b60405190815260200160405180910390f35b60756070366004609c565b600055565b005b6000546053565b6053608936600460b4565b60006093828460d5565b90505b92915050565b60006020828403121560ad57600080fd5b5035919050565b6000806040838503121560c657600080fd5b50508035926020909101359150565b80820180821115609657634e487b7160e01b600052601160045260246000fdfea2646970667358221220cc6f33af5f7ec5b57d41d01ce72579173dab804cd3bb07a01e8df8423ff7dbb964736f6c63430008140033",
+  "linkReferences": {},
+  "deployedLinkReferences": {}
+}
