@@ -1,0 +1,17 @@
+{
+  "network": "fuji",
+  "chainId": "43113",
+  "deployedAt": "2026-05-08T17:51:15.682Z",
+  "contracts": {
+    "EcoLedger": {
+      "address": "0x87746adD0A9365ed6dF15109fdAB26d21DC6Fe1A",
+      "constructorArgs": []
+    },
+    "AvalancheGreeter": {
+      "address": "0xEa8834f598455cE560D98566Dfc73016BDf632F6",
+      "constructorArgs": [
+        "Hello, Avalanche!"
+      ]
+    }
+  }
+}

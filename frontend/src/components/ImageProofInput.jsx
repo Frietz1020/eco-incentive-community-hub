@@ -11,22 +11,54 @@ export default function ImageProofInput({ value, onChange, label = "Proof Image"
   const [dragOver, setDragOver] = useState(false);
   const inputRef = useRef(null);
 
+  function compressImage(file, callback) {
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      const img = new Image();
+      img.onload = () => {
+        const canvas = document.createElement("canvas");
+        const MAX_SIZE = 400; // Shrink drastically for on-chain storage
+        let width = img.width;
+        let height = img.height;
+
+        if (width > height) {
+          if (width > MAX_SIZE) {
+            height *= MAX_SIZE / width;
+            width = MAX_SIZE;
+          }
+        } else {
+          if (height > MAX_SIZE) {
+            width *= MAX_SIZE / height;
+            height = MAX_SIZE;
+          }
+        }
+
+        canvas.width = width;
+        canvas.height = height;
+        const ctx = canvas.getContext("2d");
+        ctx.drawImage(img, 0, 0, width, height);
+
+        // Aggressively compress to JPEG (0.4 quality)
+        const dataUrl = canvas.toDataURL("image/jpeg", 0.4);
+        callback(dataUrl);
+      };
+      img.src = e.target.result;
+    };
+    reader.readAsDataURL(file);
+  }
+
   function handleFile(file) {
     if (!file || !file.type.startsWith("image/")) return;
 
-    // Limit to 2MB
-    if (file.size > 2 * 1024 * 1024) {
-      alert("Image must be under 2MB.");
+    if (file.size > 5 * 1024 * 1024) {
+      alert("Image must be under 5MB.");
       return;
     }
 
-    const reader = new FileReader();
-    reader.onload = (e) => {
-      const dataUrl = e.target.result;
-      setPreview(dataUrl);
-      onChange?.(dataUrl);
-    };
-    reader.readAsDataURL(file);
+    compressImage(file, (compressedDataUrl) => {
+      setPreview(compressedDataUrl);
+      onChange?.(compressedDataUrl);
+    });
   }
 
   function handleInputChange(e) {

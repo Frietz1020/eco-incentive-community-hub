@@ -1,0 +1,1001 @@
+{
+  "_format": "hh-sol-cache-2",
+  "files": {
+    "C:\\Users\\Frietz\\Documents\\eco-incentive-community-hub\\contracts\\AllContracts.sol": {
+      "lastModificationDate": 1778293819264,
+      "contentHash": "a176c9cdbccbe393253c77d62b9d7905",
+      "sourceName": "contracts/AllContracts.sol",
+      "solcConfig": {
+        "version": "0.8.20",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "evmVersion": "paris",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../learning/1-Intro/Intro.sol",
+        "../learning/2-State-Variables/StateVariables.sol",
+        "../learning/3-Local-Variables/LocalVariables.sol",
+        "../learning/4-Function/Functions.sol",
+        "../learning/5-Constructor/Constructor.sol",
+        "../learning/6-Data-Types/DataTypes.sol",
+        "../learning/7-Array/Array.sol",
+        "../learning/8-Loops/Loops.sol",
+        "../learning/9-Conditionals/Conditionals.sol",
+        "../learning/10-Struct/Struct.sol",
+        "../learning/11-Mapping/Mapping.sol",
+        "../learning/12-Storage-Locations/StorageLocations.sol",
+        "../learning/13-Global-Variables/GlobalVariables.sol",
+        "../learning/14-Contract-Balance/ContractBalance.sol",
+        "../learning/15-Visibility/Visibility.sol",
+        "../exercises/voting/Voting.sol",
+        "../exercises/token/Token.sol",
+        "../exercises/timelock/Timelock.sol",
+        "../exercises/staking/Staking.sol",
+        "../exercises/nft/NFT.sol",
+        "../exercises/multisig/Multisig.sol",
+        "../exercises/escrow/Escrow.sol",
+        "../exercises/auction/Auction.sol",
+        "./SimpleStorage.sol",
+        "./AvalancheGreeter.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.20"
+      ],
+      "artifacts": []
+    },
+    "C:\\Users\\Frietz\\Documents\\eco-incentive-community-hub\\contracts\\SimpleStorage.sol": {
+      "lastModificationDate": 1778293831927,
+      "contentHash": "ecc0b69d77a792cfa964325be43e56af",
+      "sourceName": "contracts/SimpleStorage.sol",
+      "solcConfig": {
+        "version": "0.8.20",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "evmVersion": "paris",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.20"
+      ],
+      "artifacts": [
+        "SimpleStorage"
+      ]
+    },
+    "C:\\Users\\Frietz\\Documents\\eco-incentive-community-hub\\contracts\\AvalancheGreeter.sol": {
+      "lastModificationDate": 1778293813531,
+      "contentHash": "18abae6efe2e057a8f4f310e7b3e4b59",
+      "sourceName": "contracts/AvalancheGreeter.sol",
+      "solcConfig": {
+        "version": "0.8.20",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "evmVersion": "paris",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.20"
+      ],
+      "artifacts": [
+        "AvalancheGreeter"
+      ]
+    },
+    "C:\\Users\\Frietz\\Documents\\eco-incentive-community-hub\\learning\\1-Intro\\Intro.sol": {
+      "lastModificationDate": 1778293778359,
+      "contentHash": "9bcc638379b3b0bd94ba2ea07f81f6b1",
+      "sourceName": "learning/1-Intro/Intro.sol",
+      "solcConfig": {
+        "version": "0.8.20",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "evmVersion": "paris",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.20"
+      ],
+      "artifacts": [
+        "Intro"
+      ]
+    },
+    "C:\\Users\\Frietz\\Documents\\eco-incentive-community-hub\\learning\\4-Function\\Functions.sol": {
+      "lastModificationDate": 1778293778368,
+      "contentHash": "210e103c60c241ec3c88b1318fca3406",
+      "sourceName": "learning/4-Function/Functions.sol",
+      "solcConfig": {
+        "version": "0.8.20",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "evmVersion": "paris",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.20"
+      ],
+      "artifacts": [
+        "Functions"
+      ]
+    },
+    "C:\\Users\\Frietz\\Documents\\eco-incentive-community-hub\\learning\\3-Local-Variables\\LocalVariables.sol": {
+      "lastModificationDate": 1778293778368,
+      "contentHash": "6218fa7d4bc9a477462907e3b948111b",
+      "sourceName": "learning/3-Local-Variables/LocalVariables.sol",
+      "solcConfig": {
+        "version": "0.8.20",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "evmVersion": "paris",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.20"
+      ],
+      "artifacts": [
+        "LocalVariables"
+      ]
+    },
+    "C:\\Users\\Frietz\\Documents\\eco-incentive-community-hub\\learning\\2-State-Variables\\StateVariables.sol": {
+      "lastModificationDate": 1778293778367,
+      "contentHash": "63666e7e0cf6faf7ddd5a7aadeabd221",
+      "sourceName": "learning/2-State-Variables/StateVariables.sol",
+      "solcConfig": {
+        "version": "0.8.20",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "evmVersion": "paris",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.20"
+      ],
+      "artifacts": [
+        "StateVariables"
+      ]
+    },
+    "C:\\Users\\Frietz\\Documents\\eco-incentive-community-hub\\learning\\6-Data-Types\\DataTypes.sol": {
+      "lastModificationDate": 1778293778370,
+      "contentHash": "781a21ba783776d08bbecdbda83ee4a6",
+      "sourceName": "learning/6-Data-Types/DataTypes.sol",
+      "solcConfig": {
+        "version": "0.8.20",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "evmVersion": "paris",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.20"
+      ],
+      "artifacts": [
+        "DataTypes"
+      ]
+    },
+    "C:\\Users\\Frietz\\Documents\\eco-incentive-community-hub\\learning\\8-Loops\\Loops.sol": {
+      "lastModificationDate": 1778293778372,
+      "contentHash": "1dba084265172f510821d8a320c0bb5e",
+      "sourceName": "learning/8-Loops/Loops.sol",
+      "solcConfig": {
+        "version": "0.8.20",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "evmVersion": "paris",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.20"
+      ],
+      "artifacts": [
+        "Loops"
+      ]
+    },
+    "C:\\Users\\Frietz\\Documents\\eco-incentive-community-hub\\learning\\5-Constructor\\Constructor.sol": {
+      "lastModificationDate": 1778293778369,
+      "contentHash": "6129878eff75cb990cd099c2fd8d6052",
+      "sourceName": "learning/5-Constructor/Constructor.sol",
+      "solcConfig": {
+        "version": "0.8.20",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "evmVersion": "paris",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.20"
+      ],
+      "artifacts": [
+        "Constructor"
+      ]
+    },
+    "C:\\Users\\Frietz\\Documents\\eco-incentive-community-hub\\learning\\7-Array\\Array.sol": {
+      "lastModificationDate": 1778293778371,
+      "contentHash": "a9f1f2fcc4f6f0e96999aaec8c31c062",
+      "sourceName": "learning/7-Array/Array.sol",
+      "solcConfig": {
+        "version": "0.8.20",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "evmVersion": "paris",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.20"
+      ],
+      "artifacts": [
+        "Array"
+      ]
+    },
+    "C:\\Users\\Frietz\\Documents\\eco-incentive-community-hub\\learning\\10-Struct\\Struct.sol": {
+      "lastModificationDate": 1778293778360,
+      "contentHash": "5ed0874fe9cbd904e9d19ac673ff1e1b",
+      "sourceName": "learning/10-Struct/Struct.sol",
+      "solcConfig": {
+        "version": "0.8.20",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "evmVersion": "paris",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.20"
+      ],
+      "artifacts": [
+        "Struct"
+      ]
+    },
+    "C:\\Users\\Frietz\\Documents\\eco-incentive-community-hub\\learning\\11-Mapping\\Mapping.sol": {
+      "lastModificationDate": 1778293778362,
+      "contentHash": "68b86517ce814fc478057e0164525384",
+      "sourceName": "learning/11-Mapping/Mapping.sol",
+      "solcConfig": {
+        "version": "0.8.20",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "evmVersion": "paris",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.20"
+      ],
+      "artifacts": [
+        "Mapping"
+      ]
+    },
+    "C:\\Users\\Frietz\\Documents\\eco-incentive-community-hub\\exercises\\token\\Token.sol": {
+      "lastModificationDate": 1778293778348,
+      "contentHash": "ff2a8a4beb5bfa93b581412094153ceb",
+      "sourceName": "exercises/token/Token.sol",
+      "solcConfig": {
+        "version": "0.8.20",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "evmVersion": "paris",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.20"
+      ],
+      "artifacts": [
+        "Token"
+      ]
+    },
+    "C:\\Users\\Frietz\\Documents\\eco-incentive-community-hub\\learning\\9-Conditionals\\Conditionals.sol": {
+      "lastModificationDate": 1778293778373,
+      "contentHash": "620d0a3475791abe068d52d811fe7ddb",
+      "sourceName": "learning/9-Conditionals/Conditionals.sol",
+      "solcConfig": {
+        "version": "0.8.20",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "evmVersion": "paris",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.20"
+      ],
+      "artifacts": [
+        "Conditionals"
+      ]
+    },
+    "C:\\Users\\Frietz\\Documents\\eco-incentive-community-hub\\learning\\14-Contract-Balance\\ContractBalance.sol": {
+      "lastModificationDate": 1778293778365,
+      "contentHash": "2928e217c7c4fd578a6862338d34a775",
+      "sourceName": "learning/14-Contract-Balance/ContractBalance.sol",
+      "solcConfig": {
+        "version": "0.8.20",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "evmVersion": "paris",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.20"
+      ],
+      "artifacts": [
+        "ContractBalance"
+      ]
+    },
+    "C:\\Users\\Frietz\\Documents\\eco-incentive-community-hub\\learning\\12-Storage-Locations\\StorageLocations.sol": {
+      "lastModificationDate": 1778293778363,
+      "contentHash": "78da54db3f3d9dbea54378611fae483b",
+      "sourceName": "learning/12-Storage-Locations/StorageLocations.sol",
+      "solcConfig": {
+        "version": "0.8.20",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "evmVersion": "paris",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.20"
+      ],
+      "artifacts": [
+        "StorageLocations"
+      ]
+    },
+    "C:\\Users\\Frietz\\Documents\\eco-incentive-community-hub\\exercises\\timelock\\Timelock.sol": {
+      "lastModificationDate": 1778293778347,
+      "contentHash": "c990021bf9e631f0037dd3ec326103af",
+      "sourceName": "exercises/timelock/Timelock.sol",
+      "solcConfig": {
+        "version": "0.8.20",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "evmVersion": "paris",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.20"
+      ],
+      "artifacts": [
+        "Timelock"
+      ]
+    },
+    "C:\\Users\\Frietz\\Documents\\eco-incentive-community-hub\\learning\\15-Visibility\\Visibility.sol": {
+      "lastModificationDate": 1778293778366,
+      "contentHash": "f6d2f2b6ba69130c776c6b0791b11061",
+      "sourceName": "learning/15-Visibility/Visibility.sol",
+      "solcConfig": {
+        "version": "0.8.20",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "evmVersion": "paris",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.20"
+      ],
+      "artifacts": [
+        "Visibility"
+      ]
+    },
+    "C:\\Users\\Frietz\\Documents\\eco-incentive-community-hub\\learning\\13-Global-Variables\\GlobalVariables.sol": {
+      "lastModificationDate": 1778293778364,
+      "contentHash": "ade3e95567b65282074bf222d3671a6e",
+      "sourceName": "learning/13-Global-Variables/GlobalVariables.sol",
+      "solcConfig": {
+        "version": "0.8.20",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "evmVersion": "paris",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.20"
+      ],
+      "artifacts": [
+        "GlobalVariables"
+      ]
+    },
+    "C:\\Users\\Frietz\\Documents\\eco-incentive-community-hub\\exercises\\staking\\Staking.sol": {
+      "lastModificationDate": 1778293778346,
+      "contentHash": "58879bd1abde08f4f4a875105209dd1d",
+      "sourceName": "exercises/staking/Staking.sol",
+      "solcConfig": {
+        "version": "0.8.20",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "evmVersion": "paris",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.20"
+      ],
+      "artifacts": [
+        "Staking"
+      ]
+    },
+    "C:\\Users\\Frietz\\Documents\\eco-incentive-community-hub\\exercises\\voting\\Voting.sol": {
+      "lastModificationDate": 1778293778349,
+      "contentHash": "fc2e848fe762e9959d2fa17a5aeac3a2",
+      "sourceName": "exercises/voting/Voting.sol",
+      "solcConfig": {
+        "version": "0.8.20",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "evmVersion": "paris",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.20"
+      ],
+      "artifacts": [
+        "Voting"
+      ]
+    },
+    "C:\\Users\\Frietz\\Documents\\eco-incentive-community-hub\\exercises\\auction\\Auction.sol": {
+      "lastModificationDate": 1778293778342,
+      "contentHash": "f72a13f7f4499a21b95d964397c692bc",
+      "sourceName": "exercises/auction/Auction.sol",
+      "solcConfig": {
+        "version": "0.8.20",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "evmVersion": "paris",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.20"
+      ],
+      "artifacts": [
+        "Auction"
+      ]
+    },
+    "C:\\Users\\Frietz\\Documents\\eco-incentive-community-hub\\exercises\\nft\\NFT.sol": {
+      "lastModificationDate": 1778293778345,
+      "contentHash": "3bca2a4631123e826203556366357665",
+      "sourceName": "exercises/nft/NFT.sol",
+      "solcConfig": {
+        "version": "0.8.20",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "evmVersion": "paris",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.20"
+      ],
+      "artifacts": [
+        "NFT"
+      ]
+    },
+    "C:\\Users\\Frietz\\Documents\\eco-incentive-community-hub\\exercises\\multisig\\Multisig.sol": {
+      "lastModificationDate": 1778293778345,
+      "contentHash": "11cfb93062594de66f89134bee21dbc3",
+      "sourceName": "exercises/multisig/Multisig.sol",
+      "solcConfig": {
+        "version": "0.8.20",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "evmVersion": "paris",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.20"
+      ],
+      "artifacts": [
+        "Multisig"
+      ]
+    },
+    "C:\\Users\\Frietz\\Documents\\eco-incentive-community-hub\\exercises\\escrow\\Escrow.sol": {
+      "lastModificationDate": 1778293778344,
+      "contentHash": "ec84e5e035a1151bfab2b7ac5bc1b01a",
+      "sourceName": "exercises/escrow/Escrow.sol",
+      "solcConfig": {
+        "version": "0.8.20",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "evmVersion": "paris",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.20"
+      ],
+      "artifacts": [
+        "Escrow"
+      ]
+    },
+    "C:\\Users\\Frietz\\Documents\\eco-incentive-community-hub\\contracts\\EcoLedger.sol": {
+      "lastModificationDate": 1778295062384,
+      "contentHash": "acc766ef57839e08eb002133c2f77315",
+      "sourceName": "contracts/EcoLedger.sol",
+      "solcConfig": {
+        "version": "0.8.20",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "evmVersion": "paris",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.20"
+      ],
+      "artifacts": [
+        "EcoLedger"
+      ]
+    }
+  }
+}

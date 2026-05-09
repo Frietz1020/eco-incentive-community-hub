@@ -1,0 +1,11 @@
+{
+  "network": "hardhat",
+  "chainId": "31337",
+  "deployedAt": "2026-05-08T17:33:46.830Z",
+  "contracts": {
+    "EcoLedger": {
+      "address": "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+      "constructorArgs": []
+    }
+  }
+}
