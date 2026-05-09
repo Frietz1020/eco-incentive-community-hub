@@ -1,26 +1,20 @@
-# Dependencies
 node_modules/
 
-# Secrets — never commit keys (template stays tracked)
 .env*
 !.env.example
 
-# Hardhat / Solidity
 cache/
 artifacts/
 typechain/
 typechain-types/
 deployments/
 
-# Logs
 *.log
 .pnpm-debug.log*
 
-# Coverage
 coverage/
 coverage.json
 
-# OS & editors
 .DS_Store
 Thumbs.db
 .idea/
@@ -28,6 +22,4 @@ Thumbs.db
 *.swo
 *~
 
-# Optional: uncomment if you add these tools
-# .vscode/
 # *.pem

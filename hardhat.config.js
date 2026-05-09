@@ -2,7 +2,6 @@ const path = require("path");
 
 require("@nomicfoundation/hardhat-toolbox");
 require("@nomicfoundation/hardhat-verify");
-// Load `.env` from this project root (not from whatever the shell cwd is).
 require("dotenv").config({ path: path.join(__dirname, ".env") });
 
 /** @param {string | undefined} raw */
@@ -13,14 +12,12 @@ function normalizePrivateKey(raw) {
   return trimmed.startsWith("0x") ? trimmed : `0x${trimmed}`;
 }
 
-/** Must be exactly 32 bytes = 64 hex chars (0x optional). */
 function isValidPrivateKey(pk) {
   if (!pk) return false;
   const hex = pk.startsWith("0x") ? pk.slice(2) : pk;
   return /^[0-9a-fA-F]{64}$/.test(hex);
 }
 
-/** Cached so we only validate/warn once (Hardhat reads the config multiple times). */
 let accountsFromEnvCache;
 function accountsFromEnv() {
   if (accountsFromEnvCache !== undefined) return accountsFromEnvCache;
@@ -44,7 +41,7 @@ function accountsFromEnv() {
   return accountsFromEnvCache;
 }
 
-/** @type import('hardhat/config').HardhatUserConfig */
+/** @type */
 module.exports = {
   solidity: {
     version: "0.8.20",
@@ -74,14 +71,11 @@ module.exports = {
     },
   },
   verify: {
-    // Uses the plugin's Etherscan-like verification workflow.
-    // For Avalanche, we route through Snowtrace via `chainDescriptors`.
     etherscan: {
       apiKey: process.env.SNOWTRACE_API_KEY || "",
     },
   },
   chainDescriptors: {
-    // Avalanche Fuji
     43113: {
       name: "fuji",
       blockExplorers: {
@@ -92,7 +86,6 @@ module.exports = {
         },
       },
     },
-    // Avalanche C-Chain (Mainnet)
     43114: {
       name: "avalanche",
       blockExplorers: {
