@@ -1,5 +1,8 @@
 # EcoLedger 🌱
 
+**Team Lead:** Frietz Ranz Bayog  
+**Co-Lead / Member:** June Vic M. Abello  
+
 **EcoLedger** is an access-controlled sustainability action ledger built on the **Avalanche Fuji C-Chain**. It allows communities to record verified real-world eco-actions (like tree planting, river cleanups, and recycling) permanently on-chain, awarding non-transferable GreenPoints to participants.
 
 ---
