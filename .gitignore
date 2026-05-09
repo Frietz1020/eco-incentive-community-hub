@@ -22,3 +22,7 @@ Thumbs.db
 *~
 
 # *.pem
+
+# AI Agent Data & Unrelated Files
+.agent/
+updates.md
